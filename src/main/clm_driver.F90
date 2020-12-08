@@ -433,7 +433,7 @@ contains
 
     ! When LAI streams are being used
     ! NOTE: This call needs to happen outside loops over nclumps (as streams are not threadsafe)
-    if ((.not. use_cn) .and. (.not. use_fates) .and. (doalb) .and. use_lai_streams) then 
+    if ((.not. use_cn) .and. (.not. use_fates) .and. (doalb) .and. use_lai_streams) then
        call lai_advance( bounds_proc )
     endif
 
@@ -1089,7 +1089,7 @@ contains
                 clm_fates, nc)
        end if
 
-       
+
        ! ============================================================================
        ! Create summaries of water diagnostic terms
        ! ============================================================================
@@ -1617,19 +1617,25 @@ contains
        psum = sum(lnd2atm_inst%t_rad_grc(bounds%begg:bounds%endg))
        call mpi_reduce(psum, tsum, 1, MPI_REAL8, MPI_SUM, 0, mpicom, ier)
        if (ier/=0) then
+!$OMP MASTER
           write(iulog,*) 'write_diagnostic: Error in mpi_reduce()'
+!$OMP END MASTER
           call endrun(msg=errMsg(sourcefile, __LINE__))
        end if
        if (masterproc) then
           tsxyav = tsum / numg
+!$OMP MASTER
           write(iulog,1000) nstep, tsxyav
+!$OMP END MASTER
           call shr_sys_flush(iulog)
        end if
 
     else
 
        if (masterproc) then
+!$OMP MASTER
           write(iulog,*)'clm: completed timestep ',nstep
+!$OMP END MASTER
           call shr_sys_flush(iulog)
        end if
 
