@@ -27,8 +27,8 @@
 #
 [submodule "fates"]
 path = src/fates
-url = https://github.com/NGEET/fates
-fxtag = sci.1.81.1_api.38.0.0
+url = https://github.com/jedwards4b/fates
+fxtag = jedwards/fates_ml_phenology
 fxrequired = AlwaysRequired
 # Standard Fork to compare to with "git fleximod test" to ensure personal forks aren't committed
 fxDONOTUSEurl = https://github.com/NCAR/fates-release
@@ -75,16 +75,15 @@ fxDONOTUSEurl = https://github.com/ESMCI/ccs_config_cesm.git
 
 [submodule "cime"]
 path = cime
-url = https://github.com/ESMCI/cime
-fxtag = cime6.1.59
+url = https://github.com/jedwards4b/cime
+fxtag = ftorch_1236c0fed_0.0.2
 fxrequired = ToplevelRequired
-# Standard Fork to compare to with "git fleximod test" to ensure personal forks aren't committed
 fxDONOTUSEurl = https://github.com/ESMCI/cime
 
 [submodule "cmeps"]
 path = components/cmeps
-url = https://github.com/ESCOMP/CMEPS.git
-fxtag = cmeps1.0.33
+url = https://github.com/jedwards4b/CMEPS.git
+fxtag = ftorch_branch_1355710f_0.0.1
 fxrequired = ToplevelRequired
 # Standard Fork to compare to with "git fleximod test" to ensure personal forks aren't committed
 fxDONOTUSEurl = https://github.com/ESCOMP/CMEPS.git
@@ -128,3 +127,10 @@ fxtag = v1.0.8
 fxrequired = ToplevelOptional
 # Standard Fork to compare to with "git fleximod test" to ensure personal forks aren't committed
 fxDONOTUSEurl = https://github.com/ESMCI/doc-builder
+
+[submodule "FTorch"]
+path = libraries/FTorch
+url = https://github.com/ESCOMP/FTorch_interface
+fxtag = v0.0.4
+fxrequired = ToplevelRequired
+fxDONOTUSEurl = https://github.com/ESCOMP/FTorch_interface
